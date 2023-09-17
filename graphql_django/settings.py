@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "todos",
 ]
 
-GRAPHENE = {"SCHEMA": "graphql_django.schema.schema"}
+GRAPHENE = {"SCHEMA": "todos.schema.schema"}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

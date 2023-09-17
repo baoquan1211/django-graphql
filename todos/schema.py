@@ -5,13 +5,23 @@ import graphene
 from todos.models import Todo
 
 
-class TodoNode(DjangoObjectType):
+class TodoType(DjangoObjectType):
     class Meta:
         model = Todo
-        filter_fields = ["name", "done"]
-        interfaces = (graphene.relay.Node,)
+        filter_fields = "__all__"
 
 
 class Query(graphene.ObjectType):
-    todo = graphene.relay.Node.Field(TodoNode)
-    all_todos = DjangoFilterConnectionField(TodoNode)
+    todos = graphene.Field(TodoType, name=graphene.String())
+    all_todos = graphene.List(TodoType)
+
+    def resolve_all_todos(root, info, **kwargs):
+        # Querying a list
+        return Todo.objects.all()
+
+    def resolve_todos(root, info, name):
+        # Querying a single todo
+        return Todo.objects.get(name=name)
+
+
+schema = graphene.Schema(query=Query)
