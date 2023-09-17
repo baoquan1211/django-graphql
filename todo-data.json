@@ -1,0 +1,23 @@
+[
+  {
+    "fields": {
+      "name": "Django"
+    },
+    "model": "todos.todo",
+    "pk": 1
+  },
+  {
+    "fields": {
+      "name": "ReactJS"
+    },
+    "model": "todos.todo",
+    "pk": 2
+  },
+  {
+    "fields": {
+      "name": "GraphQL"
+    },
+    "model": "todos.todo",
+    "pk": 3
+  }
+]
